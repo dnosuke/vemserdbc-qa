@@ -1,3 +1,3 @@
 # VemSerDBC10
 
-com merge
+com merge 2
