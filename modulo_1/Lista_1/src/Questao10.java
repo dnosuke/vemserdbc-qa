@@ -23,7 +23,7 @@ public class Questao10 {
         System.out.println("Digite a média dos exercicios: ");
         mediaExercicios = input.nextFloat();
 
-        media = ( nota1 + nota2 + nota3 + mediaExercicios ) / 7;
+        media = ( nota1 + nota2*2 + nota3*3 + mediaExercicios ) / 7;
         if ( media == 9.0 ){
             conceito = "A";
         }else if(media >= 7.5 && media < 9.0){
