@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class Questao_10 {
+public class Questao10 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
         int indentificacao;
-        float nota_1, nota_2, nota_3;
-        float media_exercicios;
+        float nota1, nota2, nota3;
+        float mediaExercicios;
         float media;
         String conceito = "";
         String message;
@@ -15,15 +15,15 @@ public class Questao_10 {
         indentificacao = input.nextInt();
         input.nextLine();
         System.out.println("Digite a primeira nota: ");
-        nota_1 = input.nextFloat();
+        nota1 = input.nextFloat();
         System.out.println("Digite a segunda nota: ");
-        nota_2 = input.nextFloat();
+        nota2 = input.nextFloat();
         System.out.println("Digite a terceira nota: ");
-        nota_3 = input.nextFloat();
+        nota3 = input.nextFloat();
         System.out.println("Digite a média dos exercicios: ");
-        media_exercicios = input.nextFloat();
+        mediaExercicios = input.nextFloat();
 
-        media = ( nota_1 + nota_2 + nota_3 + media_exercicios ) / 7;
+        media = ( nota1 + nota2 + nota3 + mediaExercicios ) / 7;
         if ( media == 9.0 ){
             conceito = "A";
         }else if(media >= 7.5 && media < 9.0){
@@ -44,10 +44,10 @@ public class Questao_10 {
 
         System.out.println("==============");
         System.out.println("Número de identificação: " + indentificacao +
-                "\nPrimeira nota: " + nota_1 +
-                "\nSegunda nota: " + nota_2 +
-                "\nTerceira nota: " + nota_3 +
-                "\nMédia dos exercicios: " + media_exercicios +
+                "\nPrimeira nota: " + nota1 +
+                "\nSegunda nota: " + nota2 +
+                "\nTerceira nota: " + nota3 +
+                "\nMédia dos exercicios: " + mediaExercicios +
                 "\nMédia de aproveitamento: " + media);
         System.out.println("==============");
         System.out.println(message);

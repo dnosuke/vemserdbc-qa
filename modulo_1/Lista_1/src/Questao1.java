@@ -6,7 +6,7 @@
 
 import java.util.Scanner;
 
-public class Questao_1 {
+public class Questao1 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
