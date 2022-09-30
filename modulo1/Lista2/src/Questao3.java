@@ -4,18 +4,18 @@ public class Questao3 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        String nome = null;
-        String maisVelho = null;
-        String maisPesado = null;
+        String nome = "";
+        String maisVelho = "";
+        String maisPesado = "";
         final String VALOR_DE_SAIDA = "SAIR";
         int idade, quantidadeCadastrados = 0, maiorIdade = 0;
         double peso, altura,somaAlturas = 0, mediaAlturas = 0, alturaMaiorJogador = 0, maiorPeso = 0;
 
 
-        while(nome != VALOR_DE_SAIDA){
+        while(true){
             System.out.println("Digite o nome do jogador: ");
             nome = input.nextLine();
-            if(nome == VALOR_DE_SAIDA){
+            if(nome.equals(VALOR_DE_SAIDA)){
                 break;
             }
             System.out.println("Digite a altura do jogador:");
@@ -45,10 +45,10 @@ public class Questao3 {
 
         System.out.println("=======================================================");
         System.out.println("Quantidade de jogadores: " + quantidadeCadastrados);
-        System.out.println("Altura do maior jogador: " + alturaMaiorJogador);
+        System.out.printf("Altura do maior jogador: %.2f m\n", alturaMaiorJogador);
         System.out.println("Jogador mais velho: " + maisVelho);
         System.out.println("Jogador mais pesado: " + maisPesado);
-        System.out.printf("Média das alturas dos jogadores: %.2f\n", mediaAlturas);
+        System.out.printf("Média das alturas dos jogadores: %.2f m\n", mediaAlturas);
         System.out.println("=======================================================");
         input.close();
 
