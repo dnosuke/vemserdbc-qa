@@ -19,18 +19,14 @@ public class Questao5 {
             notaFinal = notas[i][1] * 0.6 + notas[i][2] * 0.4;
             notas[i][3] = notaFinal;
             System.out.printf("Nota Final %.2f do aluno %d\n", notaFinal, (int) notas[i][0]);
-        }
-        for (int i = 0; i < notas.length; i++) {
+
             if(notas[i][3] > maiorNotaFinal){
                 maiorNotaFinal = notas[i][3];
                 alunoMaiorNotaFinal =(int) notas[i][0];
             }
-        }
-        for (int i = 0; i < notas.length; i++) {
+
             mediaNotasFinais += notas[i][3];
         }
-
-
 
 
         System.out.println("=================================");
