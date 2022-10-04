@@ -10,18 +10,6 @@ public class ContaCorrente extends Conta implements Impressao {
         this.chequeEspecial = chequeEspecial;
     }
 
-    @Override
-    public boolean depositar(double valor) {
-        double v = this.getSaldo() + valor;
-        if(valor >= 0){
-            this.setSaldo(v);
-            return true;
-        }else{
-            System.out.println("Operação não permitida.");
-            return false;
-        }
-    }
-
     public boolean sacar(double valor){
         if(valor > 0 && (valor <= this.getSaldo()+this.chequeEspecial)){
             double v = this.getSaldo() - valor;
@@ -30,18 +18,6 @@ public class ContaCorrente extends Conta implements Impressao {
         }else{
             return false;
         }
-    }
-
-    @Override
-    public boolean transferir(Conta conta, double valor) {
-        double v = conta.getSaldo() + valor;
-        double v1 = this.getSaldo() - valor;
-        if(getSaldo() + this.chequeEspecial >= valor && valor > 0){
-            conta.setSaldo(v);
-            this.setSaldo(v1);
-            return true;
-        }
-        return false;
     }
 
     public double retornarSaldoComChequeEspecial(){

@@ -44,17 +44,32 @@ public abstract class Conta implements Movimentacao {
         this.saldo = saldo;
     }
 
-    @Override
-    public boolean sacar(double valor) {
-        return false;
-    }
 
     @Override
     public boolean depositar(double valor) {
+        if(valor > 0){
+            saldo += valor;
+            return true;
+        }
         return false;
     }
 
+    @Override
+    public boolean sacar(double valor) {
+        if(valor > 0){
+            saldo -= valor;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
     public boolean transferir(Conta conta, double valor) {
+        if(sacar(valor)){
+            conta.depositar(valor);
+            return true;
+        }
         return false;
     }
 }

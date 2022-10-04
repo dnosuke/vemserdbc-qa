@@ -44,17 +44,21 @@ public class Cliente {
     }
 
     public void imprimirContatos(){
+        if(contatos != null){
        for(int i = 0; i < contatos.length ; i++ ) {
            if(contatos[i] != null) {
                contatos[i].imprimirContato();
            }
        }
+        }
    }
    public void imprimirEnderecos(){
+       if(contatos != null){
        for(int i = 0; i < enderecos.length ; i++ ) {
            if(enderecos[i] != null) {
               enderecos[i].imprimirEndereco();
            }
+       }
        }
    }
    public void imprimirCliente(){
