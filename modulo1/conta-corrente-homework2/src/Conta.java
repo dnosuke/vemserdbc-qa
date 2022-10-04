@@ -1,4 +1,5 @@
-public abstract class Conta implements Movimentacao {
+public abstract class Conta implements Movimentacao, Impressao {
+
     private Cliente cliente;
     private String numeroConta;
     private String agencia;
@@ -9,6 +10,14 @@ public abstract class Conta implements Movimentacao {
         this.numeroConta = numeroConta;
         this.agencia = agencia;
         this.saldo = saldo;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getNumeroConta() {
@@ -33,5 +42,19 @@ public abstract class Conta implements Movimentacao {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
+    }
+
+    @Override
+    public boolean sacar(double valor) {
+        return false;
+    }
+
+    @Override
+    public boolean depositar(double valor) {
+        return false;
+    }
+
+    public boolean transferir(Conta conta, double valor) {
+        return false;
     }
 }
