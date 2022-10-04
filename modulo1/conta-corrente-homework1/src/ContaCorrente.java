@@ -14,7 +14,6 @@ public class ContaCorrente {
         System.out.println("===========================");
     }
     public boolean sacar(double valor){
-        System.out.println("Sacando...");
         if(valor > 0 && (valor < saldo+chequeEspecial)){
                 saldo -= valor;
                 return true;
@@ -23,7 +22,7 @@ public class ContaCorrente {
         }
     }
     public boolean depositar(double valor){
-        if(valor < 0 ){
+        if(valor <= 0 ){
             System.out.println("Deposito não permitido.");
             return false;
         }else{
@@ -36,11 +35,10 @@ public class ContaCorrente {
         return saldo + chequeEspecial;
     }
     public boolean transferir(ContaCorrente conta, double valor){
-        if(valor > 0){
-            conta.saldo += valor;
-            saldo -= valor;
-            return true;
+        if(sacar(valor)){
+           return conta.depositar(valor);
         }else{
+            System.out.println("Operação não permitida.");
             return false;
         }
     }
