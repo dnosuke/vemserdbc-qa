@@ -14,7 +14,7 @@ public class ContaCorrente {
         System.out.println("===========================");
     }
     public boolean sacar(double valor){
-        if(valor > 0 && (valor < saldo+chequeEspecial)){
+        if(valor > 0 && (valor <= saldo+chequeEspecial)){
                 saldo -= valor;
                 return true;
         }else{
