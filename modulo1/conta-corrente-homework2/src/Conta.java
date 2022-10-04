@@ -1,4 +1,4 @@
-public abstract class Conta implements Movimentacao, Impressao {
+public abstract class Conta implements Movimentacao {
 
     private Cliente cliente;
     private String numeroConta;
