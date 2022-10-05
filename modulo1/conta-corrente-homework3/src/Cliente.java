@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
     private String nome = "";
     private String cpf = "";
-    private Contato[] contatos = new Contato[2];
-    private Endereco[] enderecos = new Endereco[2];
+    private ArrayList<Contato> contatos = new ArrayList<>();
+    private ArrayList<Endereco> enderecos = new ArrayList<>();
 
-    public Cliente(String nome, String cpf, Contato[] contatos, Endereco[] enderecos) {
+    public Cliente(String nome, String cpf, ArrayList<Contato> contatos, ArrayList<Endereco> enderecos) {
         this.nome = nome;
         this.cpf = cpf;
         this.contatos = contatos;
@@ -27,36 +30,36 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public Contato[] getContatos() {
+    public ArrayList<Contato> getContatos() {
         return contatos;
     }
 
-    public void setContatos(Contato[] contatos) {
+    public void setContatos(ArrayList<Contato> contatos) {
         this.contatos = contatos;
     }
 
-    public Endereco[] getEnderecos() {
+    public ArrayList<Endereco> getEnderecos() {
         return enderecos;
     }
 
-    public void setEnderecos(Endereco[] enderecos) {
+    public void setEnderecos(ArrayList<Endereco> enderecos) {
         this.enderecos = enderecos;
     }
 
     public void imprimirContatos(){
         if(contatos != null){
-       for(int i = 0; i < contatos.length ; i++ ) {
-           if(contatos[i] != null) {
-               contatos[i].imprimirContato();
+       for(int i = 0; i < contatos.size() ; i++ ) {
+           if(contatos.get(i) != null) {
+               contatos.get(i).imprimirContato();
            }
        }
         }
    }
    public void imprimirEnderecos(){
        if(enderecos != null){
-       for(int i = 0; i < enderecos.length ; i++ ) {
-           if(enderecos[i] != null) {
-              enderecos[i].imprimirEndereco();
+       for(int i = 0; i < enderecos.size() ; i++ ) {
+           if(enderecos.get(i) != null) {
+              enderecos.get(i).imprimirEndereco();
            }
        }
        }
