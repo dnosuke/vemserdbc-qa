@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class Main {
@@ -39,9 +40,11 @@ public class Main {
         System.out.println("Saldo conta corrente 1: " + contaCorrente1.getSaldo()); // 600
         contaPoupanca2.transferir(contaPagamento1,200); // 300 - 200
         System.out.println("Saldo conta poupança 2: " + contaPoupanca2.getSaldo()); // 100
-        contaPagamento1.transferir(contaPoupanca2, 300); // 1200 - 300 - 4.25
+        contaPagamento1.transferir(contaPoupanca2, 300); // 1200 - 300
         contaPagamento1.transferir(contaPoupanca2, 0);
-        System.out.println("Saldo conta pagamento 1: " + contaPagamento1.getSaldo()); // 895
+        System.out.println("Saldo conta pagamento 1: " + contaPagamento1.getSaldo()); // 900
+        contaPagamento1.transferir(contaPoupanca2, 900); // saldo - 900
+        System.out.println("Saldo conta pagamento 1: " + contaPagamento1.getSaldo()); // 0
 
 //        saque
         contaPagamento1.sacar(-100);

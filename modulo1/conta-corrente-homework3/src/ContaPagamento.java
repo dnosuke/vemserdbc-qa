@@ -7,7 +7,7 @@ public class ContaPagamento extends Conta implements Impressao {
 
     @Override
     public boolean sacar(double valor) {
-        if(valor > 0 && valor >= TAXA_SAQUE){
+        if(valor > 0 && getSaldo() >= valor + TAXA_SAQUE){
             setSaldo(getSaldo() - valor - TAXA_SAQUE);
             return true;
         }else{
@@ -15,6 +15,17 @@ public class ContaPagamento extends Conta implements Impressao {
             return false;
         }
     }
+
+    @Override
+    public boolean transferir(Conta conta, double valor) {
+        if(super.sacar(valor)){
+            conta.depositar(valor);
+            return true;
+        }
+        System.out.println("Operação não permitida.");
+        return false;
+    }
+
 
     @Override
     public void imprimir() {

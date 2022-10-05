@@ -48,20 +48,20 @@ public class Cliente {
 
     public void imprimirContatos(){
         if(contatos != null){
-       for(int i = 0; i < contatos.size() ; i++ ) {
-           if(contatos.get(i) != null) {
-               contatos.get(i).imprimirContato();
-           }
-       }
+            for(int i = 0; i < contatos.size() ; i++ ) {
+                if(contatos.get(i) != null) {
+                    contatos.get(i).imprimirContato();
+                }
+            }
         }
    }
    public void imprimirEnderecos(){
        if(enderecos != null){
-       for(int i = 0; i < enderecos.size() ; i++ ) {
-           if(enderecos.get(i) != null) {
-              enderecos.get(i).imprimirEndereco();
+           for(int i = 0; i < enderecos.size() ; i++ ) {
+               if(enderecos.get(i) != null) {
+                   enderecos.get(i).imprimirEndereco();
+               }
            }
-       }
        }
    }
    public void imprimirCliente(){
