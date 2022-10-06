@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Stream {
     public static void main(String[] args) {
@@ -42,7 +43,8 @@ public class Stream {
 //        System.out.println(rico);
         //6- retornar uma lista de todos os ids das pessoas
 //          List<Integer> listaID = lista.stream()
-//                    .map(pessoa -> pessoa.getId()).toList();
+//                    .map(pessoa -> pessoa.getId())
+//                    .toList();
 //        System.out.println(listaID);
         //7- criar uma nova classe Salario com ID e Salário, utilizando a função "map" do stream, retornar uma lista desse novo objeto
 //         List<Salario> salarios = lista.stream()
@@ -61,9 +63,9 @@ public class Stream {
         //9- com o mapa da 8, retornar o nome com o id=2
 //        System.out.println(colaboradoresNomeID.get(2));
         //10- verificar se tem alguém que contenha o nome "Paulo" (containsignorecase) na lista e retornar o primeiro elemento que encontrar (findFirst).
-        //    Imprimir o nome e salário dessa pessoa
+//            Imprimir o nome e salário dessa pessoa
             Optional<Pessoa> primeiraPessoa = lista.stream()
-                    .filter(pessoa -> pessoa.getNome().equalsIgnoreCase("Paulo"))
+                    .filter(pessoa -> pessoa.getNome().toLowerCase().contains("paulo"))
                     .findFirst();
         System.out.println(primeiraPessoa);
     }
