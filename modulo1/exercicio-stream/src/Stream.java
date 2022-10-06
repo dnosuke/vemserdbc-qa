@@ -68,6 +68,11 @@ public class Stream {
                     .filter(pessoa -> pessoa.getNome().toLowerCase().contains("paulo"))
                     .findFirst();
         System.out.println(primeiraPessoa);
+        if(primeiraPessoa.isPresent()){
+            Pessoa paulo = primeiraPessoa.get();
+            System.out.println(paulo.getNome());
+            System.out.println(paulo.getSalario());
+        }
     }
 
     static class Pessoa {
