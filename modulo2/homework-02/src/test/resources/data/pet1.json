@@ -1,0 +1,18 @@
+{
+  "id": 20221100,
+  "category": {
+    "id": 234,
+    "name": "dog"
+  },
+  "name": "pluto",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 2022,
+      "name": "qa"
+    }
+  ],
+  "status": "available"
+}
