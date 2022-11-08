@@ -1,7 +1,9 @@
 package br.com.Itera;
 
 import com.github.javafaker.Faker;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class TestAutomation {
     public static WebDriver driver;
     public static WebDriverWait wait;
-
+    @Before
     public void abrirNavegador(){
         // Informando a automação qual app vai utilizar
         System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
@@ -28,7 +30,7 @@ public class TestAutomation {
         // Delay
         driver.manage().timeouts().implicitlyWait(6000, TimeUnit.MILLISECONDS);
     }
-
+    @After
     public void fecharNavegador(){
         driver.quit();
     }
@@ -36,7 +38,6 @@ public class TestAutomation {
     @Test
     public void testValidarTextAreaPratice(){
         Faker faker = new Faker();
-        abrirNavegador();
 
         driver.findElement(By.cssSelector("a[href=\"/home/automation\"]")).click();
         driver.findElement(By.cssSelector("input[id=\"name\"]")).sendKeys(faker.name().fullName());
@@ -45,14 +46,10 @@ public class TestAutomation {
         driver.findElement(By.cssSelector("input[id=\"password\"]")).sendKeys(faker.internet().password());
         driver.findElement(By.cssSelector("textarea[id=\"address\"]")).sendKeys(faker.address().fullAddress());
         driver.findElement(By.cssSelector("button[name=\"submit\"]")).click();
-
-
-        fecharNavegador();
     }
 
     @Test
     public void testValidaCheckboxRadioButtonPratice(){
-        abrirNavegador();
 
         driver.findElement(By.cssSelector("a[href=\"/home/automation\"]")).click();
         driver.findElement(By.cssSelector("input[id=\"female\"]")).click();
@@ -63,24 +60,19 @@ public class TestAutomation {
         driver.findElement(By.cssSelector("input[id=\"friday\"]")).click();
         Assert.assertTrue(driver.findElement(By.cssSelector("input[id=\"friday\"]")).isSelected());
 
-        fecharNavegador();
     }
     @Test
     public void testValidaDropDownPratice(){
-        abrirNavegador();
 
         driver.findElement(By.cssSelector("a[href=\"/home/automation\"]")).click();
         driver.findElement(By.cssSelector("select[class=\"custom-select\"]")).click();
         driver.findElement(By.cssSelector("select > option:nth-child(3)")).click();
         String value = driver.findElement(By.cssSelector("select[class=\"custom-select\"]")).getAttribute("value");
         Assert.assertEquals(value, "2");
-
-        fecharNavegador();
     }
 
     @Test
     public void testValidaCheckBoxRadioButtonPracticeXpath(){
-        abrirNavegador();
 
         driver.findElement(By.cssSelector("a[href=\"/home/automation\"]")).click();
         driver.findElement(By.cssSelector("label[for=\"1year\"]")).click();
@@ -95,6 +87,5 @@ public class TestAutomation {
         Assert.assertTrue(driver.findElement(By.cssSelector("input[id=\"testng\"]")).isSelected());
         Assert.assertTrue(driver.findElement(By.cssSelector("input[id=\"serenity\"]")).isSelected());
 
-        fecharNavegador();
     }
 }
