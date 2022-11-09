@@ -1,39 +1,10 @@
-package br.com.Itera;
+package br.com.Itera.step;
 
 import com.github.javafaker.Faker;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
-
-public class TestAutomation {
-    public static WebDriver driver;
-    public static WebDriverWait wait;
-    @Before
-    public void abrirNavegador(){
-        // Informando a automação qual app vai utilizar
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
-
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 40);
-
-        // Abrir navegador = .get
-        driver.get("https://itera-qa.azurewebsites.net/");
-        // Maximizar
-        driver.manage().window().maximize();
-        // Delay
-        driver.manage().timeouts().implicitlyWait(6000, TimeUnit.MILLISECONDS);
-    }
-    @After
-    public void fecharNavegador(){
-        driver.quit();
-    }
+public class SignupTest extends BaseTest {
 
     @Test
     public void testValidarTextAreaPratice(){
