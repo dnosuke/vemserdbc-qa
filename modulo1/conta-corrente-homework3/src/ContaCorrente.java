@@ -6,6 +6,10 @@ public class ContaCorrente extends Conta implements Impressao {
         this.chequeEspecial = chequeEspecial;
     }
 
+    public ContaCorrente() {
+        super();
+    }
+
     public void setChequeEspecial(double chequeEspecial) {
         this.chequeEspecial = chequeEspecial;
     }
