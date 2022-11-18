@@ -10,6 +10,23 @@ Cypress.Commands.add("adicionarEndereco", (idPessoa, endereco) => {
       Authorization: token,
       "Content-Type": "application/json",
     },
+    qs: {
+      idPessoa: idPessoa,
+    },
+    body: endereco,
+    failOnStatusCode: false,
+  })
+    .as("response")
+    .get("@response");
+});
+Cypress.Commands.add("atualizarEndereco", (idEndereco, endereco) => {
+  cy.request({
+    method: "PUT",
+    url: `${API_BASE}endereco/${idEndereco}`,
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
     body: endereco,
     failOnStatusCode: false,
   })
@@ -85,7 +102,7 @@ Cypress.Commands.add("listarEnderecoPorPais", (pais) => {
 
 Cypress.Commands.add("deletarEndereco", (idEndereco) => {
   cy.request({
-    method: "GET",
+    method: "DELETE",
     url: `${API_BASE}endereco/${idEndereco}`,
     headers: {
       Authorization: token,
