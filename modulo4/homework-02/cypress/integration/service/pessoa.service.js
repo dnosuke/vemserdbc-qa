@@ -1,21 +1,12 @@
-import { faker } from "@faker-js/faker";
+import Ajv from "ajv";
+import { token } from "../../support/commands";
 
-const BASE_URL_PESSOA =
-  "http://vemser-dbc.dbccompany.com.br:39000/vemser/dbc-pessoa-api/";
-let token;
-
-before(() => {
-  cy.login();
-  cy.saveLocalStorage();
-  cy.getLocalStorage("token").then((response) => {
-    token = response;
-  });
-});
+const API_BASE = Cypress.env("API_BASE");
 
 Cypress.Commands.add("adicionarPessoa", (body) => {
   cy.request({
     method: "POST",
-    url: `${BASE_URL_PESSOA}pessoa`,
+    url: `${API_BASE}pessoa`,
     headers: {
       Authorization: token,
       "Content-Type": "application/JSON",
@@ -30,7 +21,7 @@ Cypress.Commands.add("adicionarPessoa", (body) => {
 Cypress.Commands.add("deletarPessoa", (idPessoa) => {
   cy.request({
     method: "DELETE",
-    url: `${BASE_URL_PESSOA}pessoa/${idPessoa}`,
+    url: `${API_BASE}pessoa/${idPessoa}`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -42,7 +33,7 @@ Cypress.Commands.add("deletarPessoa", (idPessoa) => {
 Cypress.Commands.add("listarPessoas", (page, tamanho) => {
   cy.request({
     method: "GET",
-    url: `${BASE_URL_PESSOA}pessoa`,
+    url: `${API_BASE}pessoa`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -60,7 +51,7 @@ Cypress.Commands.add("listarPessoas", (page, tamanho) => {
 Cypress.Commands.add("atualizarPessoa", (idPessoa) => {
   cy.request({
     method: "PUT",
-    url: `${BASE_URL_PESSOA}pessoa/${idPessoa}`,
+    url: `${API_BASE}pessoa/${idPessoa}`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -80,7 +71,7 @@ Cypress.Commands.add("atualizarPessoa", (idPessoa) => {
 Cypress.Commands.add("listarPessoaPeloNome", (nome) => {
   cy.request({
     method: "GET",
-    url: `${BASE_URL_PESSOA}pessoa/byname`,
+    url: `${API_BASE}pessoa/byname`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -97,7 +88,7 @@ Cypress.Commands.add("listarPessoaPeloNome", (nome) => {
 Cypress.Commands.add("listarRelatorio", (idPessoa) => {
   cy.request({
     method: "GET",
-    url: `${BASE_URL_PESSOA}pessoa/relatorio`,
+    url: `${API_BASE}pessoa/relatorio`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -114,7 +105,7 @@ Cypress.Commands.add("listarRelatorio", (idPessoa) => {
 Cypress.Commands.add("listaCompleta", (idPessoa) => {
   cy.request({
     method: "GET",
-    url: `${BASE_URL_PESSOA}pessoa/lista-completa`,
+    url: `${API_BASE}pessoa/lista-completa`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -131,7 +122,7 @@ Cypress.Commands.add("listaCompleta", (idPessoa) => {
 Cypress.Commands.add("listaEnderecos", (_idPessoa) => {
   cy.request({
     method: "GET",
-    url: `${BASE_URL_PESSOA}pessoa/lista-com-enderecos`,
+    url: `${API_BASE}pessoa/lista-com-enderecos`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -148,7 +139,7 @@ Cypress.Commands.add("listaEnderecos", (_idPessoa) => {
 Cypress.Commands.add("listaContatos", (_idPessoa) => {
   cy.request({
     method: "GET",
-    url: `${BASE_URL_PESSOA}pessoa/lista-com-contatos`,
+    url: `${API_BASE}pessoa/lista-com-contatos`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -165,7 +156,7 @@ Cypress.Commands.add("listaContatos", (_idPessoa) => {
 Cypress.Commands.add("login", () => {
   cy.request({
     method: "POST",
-    url: `${BASE_URL_PESSOA}/auth`,
+    url: `${API_BASE}/auth`,
     failOnStatusCode: false,
     body: {
       login: "admin",
@@ -179,7 +170,7 @@ Cypress.Commands.add("login", () => {
 Cypress.Commands.add("listaPessoasDataNascimento", (data, dtFinal) => {
   cy.request({
     method: "GET",
-    url: `${BASE_URL_PESSOA}pessoa/data-nascimento`,
+    url: `${API_BASE}pessoa/data-nascimento`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -193,3 +184,39 @@ Cypress.Commands.add("listaPessoasDataNascimento", (data, dtFinal) => {
     .as("response")
     .get("@response");
 });
+
+export default class Contrato {
+  contraListaPorNome(contrato) {
+    cy.listarPessoaPeloNome("Mordekaiser").then((response) => {
+      cy.validaContrato(contrato, response);
+    });
+  }
+
+  contratoListarPessoas(contrato) {
+    cy.listarPessoas(1, 20).then((response) => {
+      cy.validaContrato(contrato, response);
+    });
+  }
+
+  contratoListarRelatorio(contrato) {
+    cy.listarRelatorio(4).then((response) => {
+      cy.validaContrato(contrato, response);
+    });
+  }
+  contratoListarCompleta(contrato) {
+    cy.listaCompleta(4).then((response) => {
+      cy.validaContrato(contrato, response);
+    });
+  }
+
+  contratoListarContatos(contrato) {
+    cy.listaContatos(4).then((response) => {
+      cy.validaContrato(contrato, response);
+    });
+  }
+  contratoListaEnderecos(contrato) {
+    cy.listaEnderecos(4).then((response) => {
+      cy.validaContrato(contrato, response);
+    });
+  }
+}

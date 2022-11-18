@@ -1,7 +1,7 @@
 ///<reference types="cypress" />
 import "cypress-localstorage-commands";
 
-const userPayload = require("../../fixtures/addUser.payload.json");
+const userPayload = require("../../../fixtures/addUser.payload.json");
 
 context("Pessoa", () => {
   it("POST - Teste adicionar pessoa", () => {
