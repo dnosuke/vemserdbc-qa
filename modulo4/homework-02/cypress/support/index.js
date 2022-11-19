@@ -15,6 +15,8 @@
 
 // Import commands.js using ES2015 syntax:
 import "./commands";
+import "@shelex/cypress-allure-plugin";
+require("@shelex/cypress-allure-plugin");
 import "../integration/service/pessoa.service";
 import "../integration/service/endereco.service";
 import "../integration/service/contato.service";
