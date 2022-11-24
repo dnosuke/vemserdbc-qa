@@ -1,0 +1,7 @@
+{
+  "video": false,
+  "viewportWidth": 1000,
+  "viewportHeight": 660,
+  "defaultcommandTimeout": 500,
+  "testFiles": "**/*.feature"
+}
